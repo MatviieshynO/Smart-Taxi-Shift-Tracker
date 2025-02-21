@@ -10,8 +10,6 @@ export const DriverContext = createContext<DriverContextType | null>(null)
 
 export function DriverProvider({ children }: { children: React.ReactNode }) {
     const [currentDriver, setCurrentDriver] = useState<Driver | null>(null)
-    console.log(currentDriver)
-
     return <DriverContext.Provider value={{ currentDriver, setCurrentDriver }}>{children}</DriverContext.Provider>
 }
 export const useDriver = () => {

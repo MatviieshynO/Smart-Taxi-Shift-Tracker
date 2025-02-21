@@ -7,7 +7,7 @@ import * as Crypto from 'expo-crypto'
 export const registerDriver = async (username: string, password: string): Promise<void> => {
     try {
         const existingDriver = await db.getAllAsync(SELECT_DRIVER_BY_USERNAME_QUERY, [username])
-        if (existingDriver.length > 0) {
+        if (existingDriver[0]) {
             const error = new Error(USERNAME_TAKEN)
             error.name = 'UserAlreadyExists'
             throw error
@@ -26,7 +26,7 @@ export const login = async (username: string, password: string): Promise<Driver>
         const hashedPassword = await Crypto.digestStringAsync(Crypto.CryptoDigestAlgorithm.SHA256, password)
 
         const driver = await db.getAllAsync<Driver>(SELECT_DRIVER_BY_USERNAME_PASSWORD_QUERY, [username, hashedPassword])
-        if (!driver || driver.length === 0) {
+        if (!driver[0] || (Array.isArray(driver) && driver.length === 0)) {
             const error = new Error(UNAUTHORIZET)
             error.name = 'Unauthorized'
             throw error

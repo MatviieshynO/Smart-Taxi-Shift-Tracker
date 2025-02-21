@@ -21,7 +21,6 @@ export default function RegisterPassword() {
 
     return (
         <View style={styles.constainer}>
-            <Text style={styles.title}>Set your 4-digit PIN</Text>
             <CodeField
                 ref={ref}
                 {...props}
@@ -47,7 +46,6 @@ export default function RegisterPassword() {
 
 const styles = StyleSheet.create({
     constainer: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#1E1E2E' },
-    title: { marginBottom: 50, fontSize: 30, color: 'white' },
     cell: {
         width: 70,
         height: 70,

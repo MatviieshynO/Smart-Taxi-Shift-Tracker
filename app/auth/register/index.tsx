@@ -15,8 +15,8 @@ export default function RegisterUsername() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Welcome!</Text>
-            <Text style={styles.subtitle}>Create your account by choosing a name.</Text>
+            <Text style={styles.title}>Registration</Text>
+            <Text style={styles.subtitle}>Pick a unique username and let's go!</Text>
 
             <TextInput
                 ref={inputRef}
@@ -35,6 +35,9 @@ export default function RegisterUsername() {
             >
                 <Text style={styles.buttonText}>Next →</Text>
             </TouchableOpacity>
+            <TouchableOpacity style={styles.signInButton} onPress={() => router.push('/auth/login')}>
+                <Text style={styles.signInButtonText}>Have an account? Sign in!</Text>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -51,12 +54,12 @@ const styles = StyleSheet.create({
         fontSize: 28,
         fontWeight: 'bold',
         color: '#fff',
-        marginBottom: 10,
+        marginBottom: 5,
     },
     subtitle: {
         fontSize: 16,
         color: '#BBB',
-        marginBottom: 30,
+        marginBottom: 5,
         textAlign: 'center',
     },
     input: {
@@ -82,6 +85,21 @@ const styles = StyleSheet.create({
         marginTop: 45,
         borderWidth: 1,
         borderColor: 'grey',
+    },
+    signInButton: {
+        width: '100%',
+        height: 50,
+        borderRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#1E1E2E',
+        marginTop: 15,
+        borderWidth: 1,
+        borderColor: 'grey',
+    },
+    signInButtonText: {
+        fontSize: 18,
+        color: '#fff',
     },
     buttonActive: {
         backgroundColor: '#5c9743',

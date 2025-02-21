@@ -15,8 +15,8 @@ export default function LoginUsername() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Welcome!</Text>
-            <Text style={styles.subtitle}>Log in to your account by entering your credentials.</Text>
+            <Text style={styles.title}> Authorization</Text>
+            <Text style={styles.subtitle}>Welcome back! Glad to see you again!</Text>
 
             <TextInput
                 ref={inputRef}
@@ -34,6 +34,9 @@ export default function LoginUsername() {
             >
                 <Text style={styles.buttonText}>Next →</Text>
             </TouchableOpacity>
+            <TouchableOpacity style={styles.signUpButton} onPress={() => router.push('/auth/register')}>
+                <Text style={styles.signUpButtonText}>Don't have an account?</Text>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -50,12 +53,12 @@ const styles = StyleSheet.create({
         fontSize: 28,
         fontWeight: 'bold',
         color: '#fff',
-        marginBottom: 10,
+        marginBottom: 5,
     },
     subtitle: {
         fontSize: 16,
         color: '#BBB',
-        marginBottom: 30,
+        marginBottom: 5,
         textAlign: 'center',
     },
     input: {
@@ -82,6 +85,21 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'grey',
     },
+    signUpButton: {
+        width: '100%',
+        height: 50,
+        borderRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#1E1E2E',
+        marginTop: 15,
+        borderWidth: 1,
+        borderColor: 'grey',
+    },
+    signUpButtonText: {
+        fontSize: 18,
+        color: '#fff',
+    },
     buttonActive: {
         backgroundColor: '#5c9743',
         borderWidth: 1,
@@ -91,10 +109,5 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         color: '#fff',
-    },
-    errorText: {
-        color: 'orange',
-        fontSize: 14,
-        textAlign: 'left',
     },
 })

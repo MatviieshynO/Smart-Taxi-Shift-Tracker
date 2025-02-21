@@ -5,7 +5,7 @@ import { CodeField, useBlurOnFulfill, useClearByFocusCell } from 'react-native-c
 import Toast from 'react-native-toast-message'
 import * as SecureStore from 'expo-secure-store'
 import { login } from '@db/services/auth'
-import { useDriver } from '@contexts/DriverContext'
+import { useDriver } from '@contexts/driverContext'
 
 export default function LoginPassword() {
     const { username } = useLocalSearchParams()
@@ -19,7 +19,7 @@ export default function LoginPassword() {
     const handleSubmit = async () => {
         try {
             const driver = await login(String(username), String(pass))
-            await SecureStore.setItemAsync('userSession', String(driver.id))
+            await SecureStore.setItemAsync('driverSession', String(driver.id))
             const { password, ...rest } = driver
             setCurrentDriver(rest)
             Toast.show({

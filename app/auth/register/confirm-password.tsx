@@ -48,7 +48,6 @@ export default function ConfirmPassword() {
 
     return (
         <View style={styles.constainer}>
-            <Text style={styles.title}>Confirm your password </Text>
             <CodeField
                 ref={ref}
                 {...props}
@@ -73,7 +72,6 @@ export default function ConfirmPassword() {
 }
 const styles = StyleSheet.create({
     constainer: { flex: 1, justifyContent: 'center', backgroundColor: '#1E1E2E' },
-    title: { marginBottom: 50, fontSize: 30, color: 'white', textAlign: 'center' },
     cell: {
         width: 70,
         height: 70,
