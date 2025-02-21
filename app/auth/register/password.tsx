@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import { CodeField, useBlurOnFulfill, useClearByFocusCell } from 'react-native-confirmation-code-field'
 
-export default function RegisterPin() {
+export default function RegisterPassword() {
     const { username } = useLocalSearchParams()
     const [pin, setPin] = useState('')
     const router = useRouter()

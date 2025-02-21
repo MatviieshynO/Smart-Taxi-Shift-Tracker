@@ -3,48 +3,46 @@ import { View, Text, StyleSheet, Alert } from 'react-native'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import { CodeField, useBlurOnFulfill, useClearByFocusCell } from 'react-native-confirmation-code-field'
 import Toast from 'react-native-toast-message'
-import { registerDriver } from '@db/services/auth'
+import * as SecureStore from 'expo-secure-store'
+import { login } from '@db/services/auth'
+import { useDriver } from '@contexts/DriverContext'
 
-export default function ConfirmPassword() {
-    const { username, pin } = useLocalSearchParams()
-    const [confirmPin, setConfirmPin] = useState('')
+export default function LoginPassword() {
+    const { username } = useLocalSearchParams()
+    const [pass, setPass] = useState('')
     const router = useRouter()
+    const { setCurrentDriver } = useDriver()
 
-    const ref = useBlurOnFulfill({ value: confirmPin, cellCount: 4 })
-    const [props, getCellOnLayoutHandler] = useClearByFocusCell({ value: confirmPin, setValue: setConfirmPin })
+    const ref = useBlurOnFulfill({ value: pass, cellCount: 4 })
+    const [props, getCellOnLayoutHandler] = useClearByFocusCell({ value: pass, setValue: setPass })
 
     const handleSubmit = async () => {
         try {
-            await registerDriver(String(username), String(pin))
+            const driver = await login(String(username), String(pass))
+            await SecureStore.setItemAsync('userSession', String(driver.id))
+            const { password, ...rest } = driver
+            setCurrentDriver(rest)
             Toast.show({
                 type: 'success',
-                text1: 'yeeep!',
-                text2: 'Driver successfully added.',
+                text1: 'goood!',
+                text2: 'You logged in.',
             })
-            router.replace('/auth/login')
+            router.replace('/')
         } catch (error: any) {
             Toast.show({
                 type: 'error',
                 text1: 'Oops!',
                 text2: String(error.message),
             })
-            router.replace('/auth/register')
+            router.replace('/auth/login')
         }
     }
 
     useEffect(() => {
-        if (confirmPin.length === 4 && confirmPin !== pin) {
-            setConfirmPin('')
-            ref?.current?.focus()
-            Toast.show({
-                type: 'error',
-                text1: 'Oops!',
-                text2: 'Passwords do not match.',
-            })
-        } else if (confirmPin.length === 4 && confirmPin === pin) {
+        if (pass.length === 4) {
             handleSubmit()
         }
-    }, [confirmPin])
+    }, [pass])
 
     return (
         <View style={styles.constainer}>
@@ -52,8 +50,8 @@ export default function ConfirmPassword() {
             <CodeField
                 ref={ref}
                 {...props}
-                value={confirmPin}
-                onChangeText={setConfirmPin}
+                value={pass}
+                onChangeText={setPass}
                 cellCount={4}
                 keyboardType="number-pad"
                 rootStyle={styles.codeFieldRoot}

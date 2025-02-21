@@ -14,6 +14,9 @@ export default function Index() {
             <TouchableOpacity onPress={() => router.replace('/auth/register')}>
                 <Text>Registration</Text>
             </TouchableOpacity>
+            <TouchableOpacity onPress={() => router.replace('/auth/login')}>
+                <Text>Login</Text>
+            </TouchableOpacity>
         </View>
     )
 }
