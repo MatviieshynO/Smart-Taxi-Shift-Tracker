@@ -1,0 +1,52 @@
+import { BaseToast, ErrorToast, ToastConfigParams } from 'react-native-toast-message'
+import { StyleSheet } from 'react-native'
+
+const styles = StyleSheet.create({
+    toastContainer: {
+        borderLeftWidth: 5,
+        height: 60,
+        backgroundColor: '#2D2D44',
+        borderRadius: 10,
+        padding: 10,
+    },
+    contentContainer: {
+        paddingHorizontal: 15,
+    },
+    text1: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#fff',
+    },
+    text2: {
+        fontSize: 14,
+        color: '#fff',
+    },
+})
+
+export const toastConfig = {
+    success: (props: ToastConfigParams<any>) => (
+        <BaseToast
+            {...props}
+            style={[styles.toastContainer, { borderLeftColor: '#4CAF50' }]} // ✅ Правильний колір для успіху
+            contentContainerStyle={styles.contentContainer}
+            text1Style={styles.text1}
+            text2Style={styles.text2}
+        />
+    ),
+    error: (props: ToastConfigParams<any>) => (
+        <ErrorToast
+            {...props}
+            style={[styles.toastContainer, { borderLeftColor: '#FF3B30' }]} // ✅ Червоний для помилок
+            text1Style={styles.text1}
+            text2Style={styles.text2}
+        />
+    ),
+    info: (props: ToastConfigParams<any>) => (
+        <BaseToast
+            {...props}
+            style={[styles.toastContainer, { borderLeftColor: '#007AFF' }]} // ✅ Синій для інформації
+            text1Style={styles.text1}
+            text2Style={styles.text2}
+        />
+    ),
+}

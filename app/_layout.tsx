@@ -1,5 +1,28 @@
-import { Stack } from "expo-router";
+import { createTables } from '@db/db'
+import { Slot } from 'expo-router'
+import { useEffect } from 'react'
+import Toast from 'react-native-toast-message'
+import * as Updates from 'expo-updates'
+import { StatusBar } from 'react-native'
+import { toastConfig } from 'config/toastConfig'
 
 export default function RootLayout() {
-  return <Stack />;
+    useEffect(() => {
+        async function initDB() {
+            try {
+                await createTables()
+            } catch (error) {
+                await Updates.reloadAsync()
+            }
+        }
+        initDB()
+    }, [])
+
+    return (
+        <>
+            <StatusBar backgroundColor="#1E1E2E" barStyle="light-content" />
+            <Slot />
+            <Toast config={toastConfig} />
+        </>
+    )
 }
