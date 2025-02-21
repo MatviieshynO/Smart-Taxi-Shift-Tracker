@@ -47,7 +47,7 @@ function RootContent() {
                     router.replace('/auth/login')
                 }
                 setCurrentDriver(currentDriver)
-                router.replace('/(tabs)/index')
+                router.replace('/')
             } catch (error) {
                 await SecureStore.deleteItemAsync('driverSessin')
                 setCurrentDriver(null)
