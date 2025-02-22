@@ -6,6 +6,7 @@ import Toast from 'react-native-toast-message'
 import * as SecureStore from 'expo-secure-store'
 import { login } from '@db/services/auth'
 import { useDriver } from '@contexts/driverContext'
+import { LinearGradient } from 'expo-linear-gradient'
 
 export default function LoginPassword() {
     const { username } = useLocalSearchParams()
@@ -45,8 +46,7 @@ export default function LoginPassword() {
     }, [pass])
 
     return (
-        <View style={styles.constainer}>
-            <Text style={styles.title}>Confirm your password </Text>
+        <LinearGradient colors={['#1E1E2E', '#03001C', '#301E67', '#F5F5F5', '#5B8FB9', '#80B3FF', '#B8E4FF']} style={styles.constainer}>
             <CodeField
                 ref={ref}
                 {...props}
@@ -66,12 +66,11 @@ export default function LoginPassword() {
                     </Text>
                 )}
             />
-        </View>
+        </LinearGradient>
     )
 }
 const styles = StyleSheet.create({
     constainer: { flex: 1, justifyContent: 'center', backgroundColor: '#1E1E2E' },
-    title: { marginBottom: 50, fontSize: 30, color: 'white', textAlign: 'center' },
     cell: {
         width: 70,
         height: 70,

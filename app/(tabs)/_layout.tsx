@@ -6,13 +6,13 @@ export default function TabsLayout() {
         <Tabs
             screenOptions={{
                 tabBarStyle: {
-                    backgroundColor: '#1E1E2E', // Темний фон
-                    borderTopWidth: 0, // Прибираємо стандартну рамку
-                    height: 60, // Компактний розмір
+                    backgroundColor: '#1E1E2E',
+                    borderTopWidth: 0,
+                    height: 60,
                     paddingBottom: 10,
                 },
-                tabBarActiveTintColor: '#FFF', // Білий для активних іконок
-                tabBarInactiveTintColor: '#888', // Світло-сірий для неактивних
+                tabBarActiveTintColor: '#FFF',
+                tabBarInactiveTintColor: '#888',
                 headerShown: false,
                 tabBarLabelStyle: {
                     fontSize: 12,

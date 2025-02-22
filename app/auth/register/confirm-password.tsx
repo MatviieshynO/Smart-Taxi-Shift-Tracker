@@ -4,6 +4,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router'
 import { CodeField, useBlurOnFulfill, useClearByFocusCell } from 'react-native-confirmation-code-field'
 import Toast from 'react-native-toast-message'
 import { registerDriver } from '@db/services/auth'
+import { LinearGradient } from 'expo-linear-gradient'
 
 export default function ConfirmPassword() {
     const { username, pin } = useLocalSearchParams()
@@ -47,7 +48,7 @@ export default function ConfirmPassword() {
     }, [confirmPin])
 
     return (
-        <View style={styles.constainer}>
+        <LinearGradient colors={['#1E1E2E', '#03001C', '#301E67', '#F5F5F5', '#5B8FB9', '#80B3FF', '#B8E4FF']} style={styles.constainer}>
             <CodeField
                 ref={ref}
                 {...props}
@@ -67,7 +68,7 @@ export default function ConfirmPassword() {
                     </Text>
                 )}
             />
-        </View>
+        </LinearGradient>
     )
 }
 const styles = StyleSheet.create({

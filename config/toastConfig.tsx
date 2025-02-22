@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#2D2D44',
         borderRadius: 10,
         padding: 10,
+        zIndex: 9999,
     },
     contentContainer: {
         paddingHorizontal: 15,

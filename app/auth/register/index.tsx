@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
 import { useRouter } from 'expo-router'
+import { LinearGradient } from 'expo-linear-gradient'
 
 export default function RegisterUsername() {
     const [username, setUsername] = useState('')
@@ -14,7 +15,7 @@ export default function RegisterUsername() {
     }
 
     return (
-        <View style={styles.container}>
+        <LinearGradient colors={['#1E1E2E', '#03001C', '#301E67', '#5B8FB9', '#80B3FF', '#B8E4FF', '#F5F5F5']} style={styles.container}>
             <Text style={styles.title}>Registration</Text>
             <Text style={styles.subtitle}>Pick a unique username and let's go!</Text>
 
@@ -38,7 +39,7 @@ export default function RegisterUsername() {
             <TouchableOpacity style={styles.signInButton} onPress={() => router.push('/auth/login')}>
                 <Text style={styles.signInButtonText}>Have an account? Sign in!</Text>
             </TouchableOpacity>
-        </View>
+        </LinearGradient>
     )
 }
 

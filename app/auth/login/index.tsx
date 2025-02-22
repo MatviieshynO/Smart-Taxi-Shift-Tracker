@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
+import { Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
+import { LinearGradient } from 'expo-linear-gradient'
 import { useRouter } from 'expo-router'
 
 export default function LoginUsername() {
@@ -14,7 +15,7 @@ export default function LoginUsername() {
     }
 
     return (
-        <View style={styles.container}>
+        <LinearGradient colors={['#1E1E2E', '#03001C', '#301E67', '#5B8FB9', '#80B3FF', '#B8E4FF', '#F5F5F5']} style={styles.container}>
             <Text style={styles.title}> Authorization</Text>
             <Text style={styles.subtitle}>Welcome back! Glad to see you again!</Text>
 
@@ -32,12 +33,19 @@ export default function LoginUsername() {
                 onPress={handleNext}
                 disabled={username.length < 2}
             >
-                <Text style={styles.buttonText}>Next →</Text>
+                <LinearGradient
+                    colors={username.length > 1 ? ['#005C5C', '#008F8F', '#00BFBF', '#00FFFF'] : ['#4A4A4A', '#2D2D2D']}
+                    style={styles.gradient}
+                >
+                    <Text style={styles.buttonText}>Next →</Text>
+                </LinearGradient>
             </TouchableOpacity>
             <TouchableOpacity style={styles.signUpButton} onPress={() => router.push('/auth/register')}>
-                <Text style={styles.signUpButtonText}>Don't have an account?</Text>
+                <LinearGradient colors={['#4A4A6A', '#2D2D44']} style={styles.gradient}>
+                    <Text style={styles.signUpButtonText}>Don't have an account?</Text>
+                </LinearGradient>
             </TouchableOpacity>
-        </View>
+        </LinearGradient>
     )
 }
 
@@ -109,5 +117,11 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         color: '#fff',
+    },
+    gradient: {
+        height: '100%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 })

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import { CodeField, useBlurOnFulfill, useClearByFocusCell } from 'react-native-confirmation-code-field'
+import { LinearGradient } from 'expo-linear-gradient'
 
 export default function RegisterPassword() {
     const { username } = useLocalSearchParams()
@@ -20,7 +21,7 @@ export default function RegisterPassword() {
     }
 
     return (
-        <View style={styles.constainer}>
+        <LinearGradient colors={['#1E1E2E', '#03001C', '#301E67', '#F5F5F5', '#5B8FB9', '#80B3FF', '#B8E4FF']} style={styles.constainer}>
             <CodeField
                 ref={ref}
                 {...props}
@@ -40,7 +41,7 @@ export default function RegisterPassword() {
                     </Text>
                 )}
             />
-        </View>
+        </LinearGradient>
     )
 }
 

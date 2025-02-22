@@ -38,19 +38,19 @@ function RootContent() {
             try {
                 const driverId = await SecureStore.getItemAsync('driverSession')
                 if (!driverId) {
-                    setCurrentDriver(null)
+                    setCurrentDriver({})
                     router.replace('/auth/login')
                 }
                 const currentDriver = await getDriverById(String(driverId))
                 if (!currentDriver) {
-                    setCurrentDriver(null)
+                    setCurrentDriver({})
                     router.replace('/auth/login')
                 }
                 setCurrentDriver(currentDriver)
                 router.replace('/')
             } catch (error) {
                 await SecureStore.deleteItemAsync('driverSessin')
-                setCurrentDriver(null)
+                setCurrentDriver({})
                 router.replace('/auth/login')
             }
         }
