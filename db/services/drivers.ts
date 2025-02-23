@@ -10,7 +10,18 @@ import {
 } from '@db/errors/drivers'
 import { DELET_DRIVER_BY_ID, GET_DRIVER_BY_ID, SELECT_DRIVER_BY_ID, SELECT_DRIVER_BY_USERNAME, UPDATE_DRIVER } from '@db/queries/drivers'
 import { Driver } from '@db/types'
+export const getAllDrivers = async (): Promise<Driver[]> => {
+    try {
+        const drivers = await db.getAllAsync<Driver>(`SELECT * FROM drivers`)
 
+        if (!drivers || drivers.length === 0) {
+            return []
+        }
+        return drivers
+    } catch (error) {
+        return []
+    }
+}
 export const getDriverById = async (userId: string): Promise<Driver> => {
     try {
         const driver = await db.getAllAsync<Driver>(SELECT_DRIVER_BY_ID, [userId])

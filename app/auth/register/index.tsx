@@ -16,7 +16,7 @@ export default function RegisterUsername() {
 
     return (
         <LinearGradient colors={['#1E1E2E', '#03001C', '#301E67', '#5B8FB9', '#80B3FF', '#B8E4FF', '#F5F5F5']} style={styles.container}>
-            <Text style={styles.title}>Registration</Text>
+            <Text style={styles.title}>Add driver</Text>
             <Text style={styles.subtitle}>Pick a unique username and let's go!</Text>
 
             <TextInput
@@ -37,7 +37,7 @@ export default function RegisterUsername() {
                 <Text style={styles.buttonText}>Next →</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.signInButton} onPress={() => router.push('/auth/login')}>
-                <Text style={styles.signInButtonText}>Have an account? Sign in!</Text>
+                <Text style={styles.signInButtonText}>Back to the drivers list!</Text>
             </TouchableOpacity>
         </LinearGradient>
     )

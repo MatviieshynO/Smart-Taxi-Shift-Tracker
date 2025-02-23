@@ -111,7 +111,6 @@ export default function ProfileScreen() {
             })
         }
     }
-
     const handleChangeDriverPassword = async () => {
         try {
             const hashedNewPassword = await hashPassword(newPassword)

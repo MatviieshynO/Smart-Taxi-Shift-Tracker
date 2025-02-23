@@ -12,11 +12,11 @@ export default function AuthLayout() {
             }}
         >
             <Stack.Screen name="register/index" options={{ title: '' }} />
-            <Stack.Screen name="register/password" options={{ title: 'Create a Secure Password' }} />
-            <Stack.Screen name="register/confirm-password" options={{ title: 'Confirm Your Password' }} />
+            <Stack.Screen name="register/password" options={{ title: 'Create a Secure Password', animation: 'slide_from_right' }} />
+            <Stack.Screen name="register/confirm-password" options={{ title: 'Confirm Your Password', animation: 'slide_from_right' }} />
 
             <Stack.Screen name="login/index" options={{ title: '' }} />
-            <Stack.Screen name="login/password" options={{ title: 'Enter Your Password' }} />
+            <Stack.Screen name="login/password" options={{ title: 'Enter Your Password', animation: 'slide_from_right' }} />
         </Stack>
     )
 }
