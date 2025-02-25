@@ -33,3 +33,17 @@ export interface IServiceReposponse<T> {
     errorMessage?: string
     successMessage?: string
 }
+
+export interface IShift {
+    id?: number
+    driver_id: number
+    car_id: number
+    total_time: number
+    total_km: number
+    total_earnings: number
+    total_expenses: number
+    earnings_per_hour?: number
+    earnings_per_km?: number
+    net_earnings?: number
+    created_at?: string
+}

@@ -76,7 +76,7 @@ export async function UpdateCarById(carId: number, updateFields: ICar): Promise<
             return { success: false, errorMessage: ERROR_MESSAGES.CARS.MISSING_CAR_UPDATE_FIRLDS }
         }
 
-        // 4. Generating query and updating driver fields
+        // 4. Generating query and updating car fields
         const updateQuery = CAR_QUERIES.UPDATE_CAR_FIELDS(keys)
         const updateResult = await db.runAsync(updateQuery, [...values, carId])
 

@@ -29,6 +29,12 @@ export const ERROR_MESSAGES = {
         MISSING_CAR_ID: 'Car ID is required.',
         MISSING_CAR_UPDATE_FIRLDS: 'Update fields are required',
     },
+    SHIFTS: {
+        MISSING_SHIFT_OPTIONS: 'Shift options is required',
+        MISSING_DRIVER_ID: 'Driver ID is required.',
+        MISSING_SHIFT_ID: 'Shift ID is required.',
+        MISSING_SHIFT_UPDATE_FIRLDS: 'Update fields are required',
+    },
     SERVER: {
         GENERAL_ERROR: 'An unexpected server error occurred.',
         REGISTRATION_FAILED: 'Server error: Registration failed',

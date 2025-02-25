@@ -37,3 +37,22 @@ export const createCarsTable = `
                 UPDATE cars SET updated_at = CURRENT_TIMESTAMP WHERE id = OLD.id;
             END;
         `
+export const createShiftsTable = `
+        CREATE TABLE IF NOT EXISTS shifts (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            driver_id INTEGER NOT NULL,
+            car_id INTEGER NOT NULL,
+            total_time REAL CHECK (total_time >= 0),
+            total_km REAL CHECK (total_km >= 0),
+            total_earnings REAL DEFAULT 0 CHECK (total_earnings >= 0),
+            total_expenses REAL DEFAULT 0 CHECK (total_expenses >= 0),
+            earnings_per_hour REAL GENERATED ALWAYS AS (CASE 
+                WHEN total_time > 0 THEN total_earnings / total_time ELSE 0 
+            END) VIRTUAL, 
+            earnings_per_km REAL GENERATED ALWAYS AS (CASE 
+                WHEN total_km > 0 THEN total_earnings / total_km ELSE 0 
+            END) VIRTUAL, 
+            net_earnings REAL GENERATED ALWAYS AS (total_earnings - total_expenses) VIRTUAL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP 
+        );
+     `

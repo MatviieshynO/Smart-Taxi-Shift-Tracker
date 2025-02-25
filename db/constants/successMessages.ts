@@ -9,4 +9,9 @@ export const SUCCESS_MESSAGES = {
         CAR_UPDATE_SUCCESS: 'CAR updated successfully.',
         CAR_DELETE_SUCCESS: 'Car deleted successfully.',
     },
+    SHIFTS: {
+        ADD_NEW_SHIFT_SUCCESS: 'New shift successfully added.',
+        SHIFT_UPDATE_SUCCESS: 'Shift updated successfully.',
+        SHIFT_DELETE_SUCCESS: 'Shift deleted successfully.',
+    },
 }
