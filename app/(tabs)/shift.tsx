@@ -8,8 +8,6 @@ export default function Shift() {
                 justifyContent: 'center',
                 alignItems: 'center',
             }}
-        >
-            <Text>Shift</Text>
-        </View>
+        ></View>
     )
 }
