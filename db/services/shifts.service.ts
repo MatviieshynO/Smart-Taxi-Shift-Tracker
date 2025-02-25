@@ -1,7 +1,6 @@
 import { ERROR_MESSAGES } from '@db/constants/errorMessages'
 import { SUCCESS_MESSAGES } from '@db/constants/successMessages'
 import db from '@db/db'
-import { CAR_QUERIES } from '@db/queries/cars.queries'
 import { SHIFTS_QUERIES } from '@db/queries/shifts.queries'
 import { IServiceReposponse, IShift } from '@db/types'
 
