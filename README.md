@@ -1,8 +1,10 @@
-## 🌍 Select Language | Виберіть мову | Wybierz język
+# 🌍 Select Language
 
--   🇬🇧 [English](README.md)
--   🇺🇦 [Українська](README_UA.md)
--   🇵🇱 [Polski](README_PL.md)
+🌎 **Choose your language:**  
+
+- 🇬🇧 [**English**](README.md)  
+- 🇵🇱 [**Polski**](README_PL.md)  
+- 🇺🇦 [**Українська**](README_UA.md)
 
 # 🚖 Smart Taxi Shift Tracker
 
