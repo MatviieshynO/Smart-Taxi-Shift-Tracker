@@ -1,59 +1,57 @@
 import { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, Alert } from 'react-native'
+import { Text, StyleSheet } from 'react-native'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import { CodeField, useBlurOnFulfill, useClearByFocusCell } from 'react-native-confirmation-code-field'
 import Toast from 'react-native-toast-message'
-import { registerDriver } from '@db/services/auth'
+import { DriverRegistration } from '@db/services/auth.service'
 import { LinearGradient } from 'expo-linear-gradient'
 
 export default function ConfirmPassword() {
-    const { username, pin } = useLocalSearchParams()
-    const [confirmPin, setConfirmPin] = useState('')
+    const { driverName, driverPassword } = useLocalSearchParams()
+    const [driverPasswordConfirm, setDriverPasswordConfirm] = useState<string>('')
     const router = useRouter()
-
-    const ref = useBlurOnFulfill({ value: confirmPin, cellCount: 4 })
-    const [props, getCellOnLayoutHandler] = useClearByFocusCell({ value: confirmPin, setValue: setConfirmPin })
-
+    const ref = useBlurOnFulfill({ value: driverPasswordConfirm, cellCount: 4 })
+    const [props, getCellOnLayoutHandler] = useClearByFocusCell({ value: driverPasswordConfirm, setValue: setDriverPasswordConfirm })
     const handleSubmit = async () => {
         try {
-            await registerDriver(String(username), String(pin))
+            const response = await DriverRegistration(String(driverName), String(driverPassword), driverPasswordConfirm)
+            if (!response.success && response.errorMessage) {
+                Toast.show({
+                    type: 'error',
+                    text1: 'Error:!',
+                    text2: response.errorMessage,
+                })
+                return router.replace('/auth/register')
+            }
             Toast.show({
                 type: 'success',
-                text1: 'yeeep!',
-                text2: 'Driver successfully added.',
+                text1: 'Success:!',
+                text2: response.successMessage,
             })
             router.replace('/auth/login')
-        } catch (error: any) {
+        } catch (error) {
             Toast.show({
                 type: 'error',
                 text1: 'Oops!',
-                text2: String(error.message),
+                text2: 'Registration error, please try again.',
             })
-            router.replace('/auth/register')
+            return router.replace('/auth/register')
         }
     }
 
     useEffect(() => {
-        if (confirmPin.length === 4 && confirmPin !== pin) {
-            setConfirmPin('')
-            ref?.current?.focus()
-            Toast.show({
-                type: 'error',
-                text1: 'Oops!',
-                text2: 'Passwords do not match.',
-            })
-        } else if (confirmPin.length === 4 && confirmPin === pin) {
+        if (driverPasswordConfirm.length === 4) {
             handleSubmit()
         }
-    }, [confirmPin])
+    }, [driverPasswordConfirm])
 
     return (
         <LinearGradient colors={['#1E1E2E', '#03001C', '#301E67', '#F5F5F5', '#5B8FB9', '#80B3FF', '#B8E4FF']} style={styles.constainer}>
             <CodeField
                 ref={ref}
                 {...props}
-                value={confirmPin}
-                onChangeText={setConfirmPin}
+                value={driverPasswordConfirm}
+                onChangeText={(password) => setDriverPasswordConfirm(password.trim())}
                 cellCount={4}
                 keyboardType="number-pad"
                 rootStyle={styles.codeFieldRoot}
@@ -62,7 +60,7 @@ export default function ConfirmPassword() {
                     <Text
                         key={index}
                         style={[styles.cell, isFocused && styles.focusCell, symbol && styles.filledCell]}
-                        onLayout={getCellOnLayoutHandler(index)}
+                        onLayout={() => getCellOnLayoutHandler(index)}
                     >
                         {symbol ? '•' : isFocused ? '|' : ''}
                     </Text>
@@ -85,14 +83,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#2D2D44',
         color: 'white',
     },
+    codeFieldRoot: {
+        paddingHorizontal: 25,
+    },
     focusCell: {
         borderColor: 'yellow',
         backgroundColor: '#3A3A52',
     },
     filledCell: {
         color: 'white',
-    },
-    codeFieldRoot: {
-        paddingHorizontal: 25,
     },
 })

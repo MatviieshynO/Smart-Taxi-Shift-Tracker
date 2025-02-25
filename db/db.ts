@@ -1,13 +1,17 @@
 import { openDatabaseSync } from 'expo-sqlite'
-import { createDriversTable } from './tables'
+import { createCarsTable, createDriversTable } from './tables'
+import { ERROR_MESSAGES } from './constants/errorMessages'
+import { SUCCESS_MESSAGES } from './constants/successMessages'
 
 const db = openDatabaseSync('taxi_helper.db')
 
 export async function createTables() {
     try {
         await db.execAsync(createDriversTable)
+        await db.execAsync(createCarsTable)
+        console.log(SUCCESS_MESSAGES.DATABASE.INIT_SUCCESS)
     } catch (error) {
-        throw new Error('Database initialization failed.')
+        console.error(ERROR_MESSAGES.DATABASE.INIT_FAILED)
     }
 }
 

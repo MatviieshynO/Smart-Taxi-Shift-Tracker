@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
     toastContainer: {
         borderLeftWidth: 5,
-        height: 60,
+        height: 70,
         backgroundColor: '#2D2D44',
         borderRadius: 10,
         padding: 10,
@@ -28,7 +28,7 @@ export const toastConfig = {
     success: (props: ToastConfigParams<any>) => (
         <BaseToast
             {...props}
-            style={[styles.toastContainer, { borderLeftColor: '#4CAF50' }]} // ✅ Правильний колір для успіху
+            style={[styles.toastContainer, { borderLeftColor: '#4CAF50' }]}
             contentContainerStyle={styles.contentContainer}
             text1Style={styles.text1}
             text2Style={styles.text2}
@@ -37,7 +37,7 @@ export const toastConfig = {
     error: (props: ToastConfigParams<any>) => (
         <ErrorToast
             {...props}
-            style={[styles.toastContainer, { borderLeftColor: '#FF3B30' }]} // ✅ Червоний для помилок
+            style={[styles.toastContainer, { borderLeftColor: '#FF3B30' }]}
             text1Style={styles.text1}
             text2Style={styles.text2}
         />
@@ -45,7 +45,7 @@ export const toastConfig = {
     info: (props: ToastConfigParams<any>) => (
         <BaseToast
             {...props}
-            style={[styles.toastContainer, { borderLeftColor: '#007AFF' }]} // ✅ Синій для інформації
+            style={[styles.toastContainer, { borderLeftColor: '#007AFF' }]}
             text1Style={styles.text1}
             text2Style={styles.text2}
         />

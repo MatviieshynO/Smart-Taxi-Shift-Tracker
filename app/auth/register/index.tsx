@@ -1,17 +1,16 @@
-import { useState, useEffect, useRef } from 'react'
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
+import { useState } from 'react'
+import { Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
 import { useRouter } from 'expo-router'
 import { LinearGradient } from 'expo-linear-gradient'
 
 export default function RegisterUsername() {
-    const [username, setUsername] = useState('')
+    const [driverName, setDriverName] = useState<string>('')
+
     const router = useRouter()
-    const inputRef = useRef<TextInput>(null)
 
     const handleNext = () => {
-        if (!username.trim()) return
-        setUsername('')
-        router.push({ pathname: '/auth/register/password', params: { username } })
+        setDriverName('')
+        router.replace({ pathname: '/auth/register/password', params: { driverName } })
     }
 
     return (
@@ -20,19 +19,18 @@ export default function RegisterUsername() {
             <Text style={styles.subtitle}>Pick a unique username and let's go!</Text>
 
             <TextInput
-                ref={inputRef}
                 style={styles.input}
                 placeholder="Enter your name"
                 placeholderTextColor="#888"
-                value={username}
-                onChangeText={(text) => setUsername(text.trim())}
+                value={driverName}
+                onChangeText={(text) => setDriverName(text.trim())}
             />
-            {username.length < 2 ? <Text style={styles.errorText}>Name must be at least 2 letters</Text> : null}
+            {driverName.length < 2 ? <Text style={styles.errorText}>Name must be at least 2 letters</Text> : null}
 
             <TouchableOpacity
-                style={[styles.button, username.length > 1 ? styles.buttonActive : {}]}
+                style={[styles.button, driverName.length > 2 ? styles.buttonActive : {}]}
                 onPress={handleNext}
-                disabled={username.length < 2}
+                disabled={driverName.length < 2}
             >
                 <Text style={styles.buttonText}>Next →</Text>
             </TouchableOpacity>
@@ -76,6 +74,11 @@ const styles = StyleSheet.create({
         borderColor: 'white',
         borderRadius: 5,
     },
+    errorText: {
+        color: 'orange',
+        fontSize: 14,
+        textAlign: 'left',
+    },
     button: {
         width: '100%',
         height: 50,
@@ -86,6 +89,16 @@ const styles = StyleSheet.create({
         marginTop: 45,
         borderWidth: 1,
         borderColor: 'grey',
+    },
+    buttonActive: {
+        backgroundColor: '#5c9743',
+        borderWidth: 1,
+        borderColor: 'white',
+    },
+    buttonText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#fff',
     },
     signInButton: {
         width: '100%',
@@ -101,20 +114,5 @@ const styles = StyleSheet.create({
     signInButtonText: {
         fontSize: 18,
         color: '#fff',
-    },
-    buttonActive: {
-        backgroundColor: '#5c9743',
-        borderWidth: 1,
-        borderColor: 'white',
-    },
-    buttonText: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: '#fff',
-    },
-    errorText: {
-        color: 'orange',
-        fontSize: 14,
-        textAlign: 'left',
     },
 })

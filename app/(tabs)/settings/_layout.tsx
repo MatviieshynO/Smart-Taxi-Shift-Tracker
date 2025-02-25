@@ -6,13 +6,14 @@ export default function SettingsLayout() {
             screenOptions={{
                 headerStyle: { backgroundColor: '#1E1E2E' },
                 headerTintColor: '#FFFFFF',
-                headerTitleAlign: 'center', 
+                headerTitleAlign: 'center',
                 headerTitleStyle: { fontSize: 20, fontWeight: 'bold' },
-                headerShadowVisible: false, 
+                headerShadowVisible: false,
             }}
         >
-            <Stack.Screen name="index" options={{ title: '' }} />
-            <Stack.Screen name="profile" options={{ title: '' }} />
+            <Stack.Screen name="index" options={{ title: 'SETTINGS' }} />
+            <Stack.Screen name="profile" options={{ title: 'Profile settings', animation: 'slide_from_right' }} />
+            <Stack.Screen name="cars" options={{ title: 'LIST OF MY CARS.', animation: 'slide_from_right' }} />
         </Stack>
     )
 }

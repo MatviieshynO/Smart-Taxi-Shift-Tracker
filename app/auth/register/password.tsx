@@ -1,32 +1,32 @@
-import { useEffect, useState } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { useState } from 'react'
+import { Text, StyleSheet } from 'react-native'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import { CodeField, useBlurOnFulfill, useClearByFocusCell } from 'react-native-confirmation-code-field'
 import { LinearGradient } from 'expo-linear-gradient'
 
 export default function RegisterPassword() {
-    const { username } = useLocalSearchParams()
-    const [pin, setPin] = useState('')
+    const { driverName } = useLocalSearchParams()
+    const [driverPassword, setDriverPassword] = useState<string>('')
     const router = useRouter()
 
-    const ref = useBlurOnFulfill({ value: pin, cellCount: 4 })
-    const [props, getCellOnLayoutHandler] = useClearByFocusCell({ value: pin, setValue: setPin })
+    const ref = useBlurOnFulfill({ value: driverPassword, cellCount: 4 })
+    const [props, getCellOnLayoutHandler] = useClearByFocusCell({ value: driverPassword, setValue: setDriverPassword })
 
-    const handleNext = (pin: string) => {
-        setPin(pin)
-        if (pin.length === 4) {
-            router.push({ pathname: '/auth/register/confirm-password', params: { username, pin } })
-            setPin('')
+    const handleNext = (driverPassword: string) => {
+        setDriverPassword(driverPassword)
+        if (driverPassword.length === 4) {
+            setDriverPassword('')
+            router.replace({ pathname: '/auth/register/confirm-password', params: { driverName, driverPassword } })
         }
     }
 
     return (
-        <LinearGradient colors={['#1E1E2E', '#03001C', '#301E67', '#F5F5F5', '#5B8FB9', '#80B3FF', '#B8E4FF']} style={styles.constainer}>
+        <LinearGradient colors={['#1E1E2E', '#03001C', '#301E67', '#F5F5F5', '#5B8FB9', '#80B3FF', '#B8E4FF']} style={styles.container}>
             <CodeField
                 ref={ref}
                 {...props}
-                value={pin}
-                onChangeText={handleNext}
+                value={driverPassword}
+                onChangeText={(password) => handleNext(password.trim())}
                 cellCount={4}
                 keyboardType="number-pad"
                 rootStyle={styles.codeFieldRoot}
@@ -46,7 +46,7 @@ export default function RegisterPassword() {
 }
 
 const styles = StyleSheet.create({
-    constainer: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#1E1E2E' },
+    container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#1E1E2E' },
     cell: {
         width: 70,
         height: 70,
