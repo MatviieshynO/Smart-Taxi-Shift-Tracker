@@ -20,7 +20,7 @@
 
 ## 📲 Download aplication
 
-📌 **[Download APK for Android]()**  
+📌 **[Download APK for Android](https://expo.dev/artifacts/eas/bDuJ773YtcVi2arGixLRtw.aab)**  
 
 ---
 # 📸 Screenshots for a quick UI overview
