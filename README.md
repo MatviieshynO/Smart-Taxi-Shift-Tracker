@@ -110,7 +110,7 @@ Ability to add, edit, select, and open the car photo in full screen.
 ### Storage: SQLite (for offline data storage)
 
 ## 📂 Project Structure
-
+```
 /src
 ├── app # Project routing with Expo Router
 ├── assets # Media files (images, fonts, animations)
@@ -122,7 +122,7 @@ Ability to add, edit, select, and open the car photo in full screen.
 ├── services # Files for working with external services, such as remote APIs and integrations
 ├── types # Global types and interfaces
 ├── utils # Helper functions
-
+```
 ## 🏗️ Architectural Patterns
 
 ### This project follows Component Pattern for UI reusability, along with:
