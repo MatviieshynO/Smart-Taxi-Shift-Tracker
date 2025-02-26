@@ -20,8 +20,8 @@
 
 ## 📲 Download aplication
 
-📌 **[Download APK for Android]()**  
-
+📌 **[Download APK for Android](https://expo.dev/accounts/olopromotion/projects/TaxiHelper/builds/70a324b1-521e-4b73-ae30-a14f294d20f0)**
+ 
 ---
 # 📸 Screenshots for a quick UI overview
 
