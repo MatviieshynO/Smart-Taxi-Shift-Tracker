@@ -117,6 +117,7 @@ Możliwość dodawania, edytowania, wybierania i otwierania zdjęć pojazdu na p
 ├── types      # Globalne typy i interfejsy
 ├── utils      # Funkcje pomocnicze
 ```
+---
 
 ## 🏗️ Wzorce architektoniczne
 
@@ -130,7 +131,6 @@ Możliwość dodawania, edytowania, wybierania i otwierania zdjęć pojazdu na p
 
 ## 🚀 Rozpoczęcie pracy
 
-***
 
 ### Klonowanie repozytorium:
 
