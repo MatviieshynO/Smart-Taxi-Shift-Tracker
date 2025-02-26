@@ -133,7 +133,11 @@ Ability to add, edit, select, and open the car photo in full screen.
 
 ### Separation of Concerns (SoC) to keep logic and UI separate
 
+---
+
 ## 🚀 Getting Started
+
+***
 
 ### Clone the repository:
 
@@ -141,21 +145,31 @@ git clone https://github.com/MatviieshynO/Smart-Taxi-Shift-Tracker.git
 
 cd taxi-app
 
+***
+
 ### Install dependencies:
 
 yarn install # or npm install
+
+***
 
 ### Run the project:
 
 npx expo start || expo start
 
+***
+
 ### For Android:
 
 expo run:android  || npm run android
 
+***
+
 ### For iOS (Requires Mac & Xcode):
 
 expo run:ios || npm run ios
+
+---
 
 ## 📡 API & Database
 
@@ -168,6 +182,8 @@ expo run:ios || npm run ios
 📍 Live location tracking & route history
 
 🌍 Multi-language support
+
+---
 
 ### 👤 Oleh Matviieshyn  
 
