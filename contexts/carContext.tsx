@@ -1,5 +1,7 @@
+import { GetCarById } from '@db/services/cars.service'
 import { ICar } from '@db/types'
-import React, { createContext, useContext, useState } from 'react'
+import * as SecureStore from 'expo-secure-store'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 
 interface CarContextType {
     currentCar: ICar | null
@@ -12,6 +14,29 @@ export const CarContext = createContext<CarContextType | null>(null)
 
 export function CarProvider({ children }: { children: React.ReactNode }) {
     const [currentCar, setCurrentCar] = useState<ICar | null>(null)
+
+    useEffect(() => {
+        async function restoreSelectedCar() {
+            try {
+                // 1. Retrieving car ID from SecureStore.
+                const carId = await SecureStore.getItemAsync('currentCar')
+                if (!carId) return
+
+                // 2. Checking if a car with this ID exists.
+                const response = await GetCarById(Number(carId))
+                if (!response.success || !response.data) {
+                    return await SecureStore.deleteItemAsync('currentCar')
+                }
+
+                // 3. Saving car data to context.
+                setCurrentCar(response.data)
+            } catch (error) {
+                console.error('Error setting current car:', error)
+            }
+        }
+
+        restoreSelectedCar()
+    }, [])
 
     const updateFields = (fields: Partial<ICar>) => {
         setCurrentCar((prev) => (prev ? { ...prev, ...fields } : null))
