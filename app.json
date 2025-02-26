@@ -14,8 +14,9 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.olopromotion.TaxiHelper"
     },
     "web": {
       "bundler": "metro",
@@ -37,6 +38,21 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "d7eb0fd7-6154-4719-9519-36a1f40140c4"
+      }
+    },
+    "owner": "olopromotion",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/d7eb0fd7-6154-4719-9519-36a1f40140c4"
     }
   }
 }

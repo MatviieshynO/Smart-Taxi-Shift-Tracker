@@ -60,7 +60,7 @@ export function SelectCarButton({ carId }: ISelectCarButtonProps) {
                         <Ionicons name="checkmark-circle" size={24} color="white" />
                     </>
                 ) : (
-                    <Text style={styles.buttonText}>Selected</Text>
+                    <Text style={styles.buttonText}>Select</Text>
                 )}
             </TouchableOpacity>
         </>

@@ -20,7 +20,7 @@ export default function TabsLayout() {
 
                 // 2. If driverId is missing → remove state and redirect to login
                 if (!driverId) {
-                    return router.replace('/error')
+                    return router.replace('/auth/login')
                 }
                 // 3. Fetch driver data from the database
                 const currentDriver = await GetDriverById(Number(driverId))

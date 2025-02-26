@@ -75,7 +75,7 @@ export function AddCarButtron({ fetchCars }: IAddCarButtonProps) {
             <TouchableOpacity style={styles.addButton} onPress={() => setIsOpenModal(true)}>
                 <LinearGradient colors={['#007bff', '#0056b3']} style={styles.addButtonGradient}>
                     <Ionicons name="add-circle-outline" size={24} color="#fff" />
-                    <Text style={styles.addButtonText}>Додати авто</Text>
+                    <Text style={styles.addButtonText}>Add new car</Text>
                 </LinearGradient>
             </TouchableOpacity>
             <AddOrEditCarForm

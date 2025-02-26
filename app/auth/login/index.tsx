@@ -177,6 +177,7 @@ const styles = StyleSheet.create({
     driverName: {
         fontSize: 22,
         color: '#fff',
+        marginLeft: 15,
     },
     emptyContainer: {
         alignItems: 'center',
