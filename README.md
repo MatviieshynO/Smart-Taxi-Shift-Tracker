@@ -123,6 +123,9 @@ Ability to add, edit, select, and open the car photo in full screen.
 ├── types # Global types and interfaces
 ├── utils # Helper functions
 ```
+---
+
+
 ## 🏗️ Architectural Patterns
 
 ### This project follows Component Pattern for UI reusability, along with:
@@ -137,7 +140,6 @@ Ability to add, edit, select, and open the car photo in full screen.
 
 ## 🚀 Getting Started
 
-***
 
 ### Clone the repository:
 
