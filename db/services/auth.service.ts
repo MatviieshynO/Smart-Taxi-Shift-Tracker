@@ -61,7 +61,7 @@ export async function DriverRegistration(
 }
 export async function DriverAuthorization(driverName: string, driverPassword: string): Promise<IServiceReposponse<ISafeDriver>> {
     try {
-        // 1. Checking the driver's name, password and driverPasswordConfirm.
+        // 1. Checking the driver's name and password.
         if (!driverName || typeof driverName !== 'string') {
             return { success: false, errorMessage: ERROR_MESSAGES.AUTH.MISSING_DRIVER_NAME }
         }
