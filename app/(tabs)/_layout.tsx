@@ -1,7 +1,7 @@
 import { Tabs, useRouter } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons'
 import { useEffect } from 'react'
-import { useDriver } from '@contexts/driverContext'
+import { useDriver } from '../../contexts/driverContext'
 import { useCar } from '@contexts/carContext'
 import * as SecureStore from 'expo-secure-store'
 import { GetDriverById } from '@db/services/drivers.service'
