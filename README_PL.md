@@ -130,31 +130,45 @@ Możliwość dodawania, edytowania, wybierania i otwierania zdjęć pojazdu na p
 
 ## 🚀 Rozpoczęcie pracy
 
+***
+
 ### Klonowanie repozytorium:
 
 git clone https://github.com/MatviieshynO/Smart-Taxi-Shift-Tracker.git
 
 cd taxi-app
 
+***
+
 ### Instalacja zależności:
 
 yarn install # or npm install
+
+***
 
 ### Uruchomienie projektu:
 
 npx expo start || expo start
 
+***
+
 ### Dla Androida:
 
 expo run:android  || npm run android
+
+***
 
 ### Dla iOS (wymaga Maca i Xcode):
 
 expo run:ios || npm run ios
 
+---
+
 ## 📡 API i baza danych
 
 ### Ta aplikacja obsługuje SQLite do lokalnego przechowywania danych.
+
+---
 
 📌  Przyszłe ulepszenia:
 
@@ -163,6 +177,8 @@ expo run:ios || npm run ios
 📍 Śledzenie lokalizacji w czasie rzeczywistym i historia tras
 
 🌍 Obsługa wielu języków
+
+---
 
 ### 👤 Oleh Matviieshyn  
 
