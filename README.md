@@ -18,6 +18,10 @@
 
 </details>
 
+## 📲 Download aplication
+
+📌 **[Download APK for Android]()**  
+
 ---
 # 📸 Screenshots for a quick UI overview
 
